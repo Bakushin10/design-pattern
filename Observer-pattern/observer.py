@@ -1,4 +1,5 @@
 """
+Python - OOP - Observer Pattern
 https://github.com/r3ap3rpy/python
 """
 class LadiesAbove30:
@@ -27,17 +28,19 @@ class Topic:
     
     def notifyAll(self, *args, **kwards):
         for client in self.__clients:
-            client.notify(self, *args, **kwards)
-
-
+            if kwards.get("menOnly") and isinstance(client, MenAbove40):
+                client.notify(self, *args, **kwards)
+            if kwards.get("women") and isinstance(client, MenAbove40):
+                client.notify(self, *args, **kwards)
         
 topic = Topic()
 Subscribers = []
-for i in range(100):
+for i in range(20):
     Subscribers.append(MenAbove40(topic))
 
-for i in range(100):
+for i in range(20):
     Subscribers.append(LadiesAbove30(topic))
 
 
-topic.notifyAll("Notification!")
+topic.notifyAll("Men!", menOnly=True)
+topic.notifyAll("Women", women=True, li = "d")
