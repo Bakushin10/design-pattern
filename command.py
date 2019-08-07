@@ -50,7 +50,7 @@ if __name__ == '__main__':
 	tr_select = SELECT(traction)
 	tr_insert = INSERT(traction)
 	tr_update = UPDATE(traction)
-
+    
 	brkr = TransactionBroker()
 	brkr.requestTransaction(tr_select)
 	brkr.requestTransaction(tr_insert)
