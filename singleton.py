@@ -12,13 +12,20 @@ class MySingleton(object):
 
 class Singleton_Lazy(object):
     __instance = None
-
+    _num = 0
     def __init__(self):
         if not Singleton_Lazy.__instance:
             print("I have already got an instance")
         else:
             print("I do not yet have an instance")
     
+    def getValue(self):
+        self._num += 1
+    
+    @property
+    def setnum(self, num):
+        self._num = num	
+
     @classmethod
     def getInstance(cls):
         if not cls.__instance:
